@@ -3,7 +3,8 @@
 # command line argument for SWC bootcamp
 # UC Davis - Davis, CA
  
-.libPaths("C:/Users/rjabad/Documents/R/win-library/3.1")
+.libPaths("C:/Users/rjabad/Documents/R/win-library/3.1") #Always make sure to add this to the top
+#of an R script.
  
 # Load libraries
 require(ggplot2)
@@ -17,11 +18,12 @@ data.in <- read.csv(options[1])
  
 # melt with defaults
 data.in.melted <- melt(data.in)
- 
+# create a plot with ggplot
 out.plot <- ggplot(data.in.melted,(aes(x=PatientID, y=value))) +
 geom_point() +
 stat_sum() +
-theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) 
+
 # save pdf based on input file name
 savename <- paste0(options[1],".pdf")
 ggsave(out.plot, file=savename, width = 12, height = 8)
